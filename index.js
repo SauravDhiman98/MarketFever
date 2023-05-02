@@ -32,10 +32,10 @@ app.use(Cors({
 app.use("/api/",Product,data, Auth, Address, Payment);
 
 if(process.env.NODE_ENV == 'production'){
-  app.use(express.static("Client/build"))
+  app.use(express.static("client/build"))
   const path = require("path")
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'Client','build','index.html'))
+    res.sendFile(path.resolve(__dirname, 'client','build','index.html'))
   })
 }
 
