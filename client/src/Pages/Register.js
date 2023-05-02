@@ -53,7 +53,7 @@ const NavigateToHomePage =  () =>
     }
     else{
       localStorage.setItem("userData", JSON.stringify(val))
-      navigate('/E-Commerce-App',{state: val})
+      navigate('/',{state: val})
     }
   })
   .catch(err => console.log(err))

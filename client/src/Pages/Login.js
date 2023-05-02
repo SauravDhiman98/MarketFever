@@ -53,7 +53,7 @@ const Login = () => {
       setPassFlag(false);
       if (response != null) {
         let name = response.username;
-        navigate("/E-Commerce-App");
+        navigate("/");
       }
     }
   }, [response, Passflag, Nameflag, navigate]);

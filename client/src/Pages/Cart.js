@@ -32,7 +32,7 @@ const Cart = () => {
   const data = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/getcartitems/${data?.userInfo?._id}`, {
+    fetch(`/api/getcartitems/${data?.userInfo?._id}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -50,7 +50,7 @@ const Cart = () => {
         setItemPrice(totalPrice);
       });
 
-    fetch(`http://localhost:5000/api/getuseradress/${data?.userInfo?._id}`, {
+    fetch(`/api/getuseradress/${data?.userInfo?._id}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -94,7 +94,7 @@ const Cart = () => {
 
   const saveUserAdress = () => {
     setAdressLoader(true);
-    fetch("http://localhost:5000/api/AddressOfUser", {
+    fetch("/api/AddressOfUser", {
       method: "POST",
       body: JSON.stringify({
         id: data?.userInfo?._id,
@@ -123,7 +123,7 @@ const Cart = () => {
       indx: indx
     }
     setAdressLoader(true);
-      fetch('http://localhost:5000/api/updateshippingadress',{
+      fetch('/api/updateshippingadress',{
         method:'POST',
         body: JSON.stringify(adresData),
         headers:{
@@ -179,7 +179,7 @@ const Cart = () => {
           <>
             <Title>Your Cart</Title>
             <Top>
-              <TopButton onClick={() => navigate("/E-Commerce-App")}>
+              <TopButton onClick={() => navigate("/")}>
                 Continue Shopping
               </TopButton>
 

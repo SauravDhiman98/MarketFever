@@ -20,7 +20,7 @@ function App() {
   return <>
      <BrowserRouter>
      <Routes>
-      <Route exact path="/E-Commerce-App" element={<Home/>}/>
+      <Route exact path="/" element={<Home/>}/>
       <Route exact path="/login" element={<Login/>}/>
       <Route exact path="/register" element={<Register/>}/>
       <Route exact path="/productpage" element={<Product/>}/> 
