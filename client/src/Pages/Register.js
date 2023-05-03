@@ -66,7 +66,7 @@ const Validation = () =>
   var isValid = true
 
  const fnameErr = {}
- if(formData.name == "")
+ if(formData.name == null)
  {
   fnameErr.Err = "Enter the name";
   isValid = false;
@@ -74,7 +74,7 @@ const Validation = () =>
  setFnameErr(fnameErr);
 
  const lnameErr = {}
- if(formData.lastname == "")
+ if(formData.lastname == null)
  {
   lnameErr.Err = "Enter the Last name";
   isValid = false;
@@ -89,6 +89,10 @@ const Validation = () =>
   unameErr.Err = "Enter an Alphanumeric username";
   isValid = false;
  }
+ else if(formData.username == null)
+ {
+   unameErr.Err = "Enter the Name"
+}
 //  isUserExist()
 //  if(userFlag)
 //  {
@@ -102,11 +106,11 @@ const Validation = () =>
 
  const emlErr = {};
     const emlRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (formData.email == "") {
+    if (formData.email == null) {
       emlErr.Err = "Pls enter the Email";
       isValid = false;
     }
-    if (formData.email.eml != "") {
+    if (formData.email != "") {
       if (!formData.email.match(emlRegex)) {
         emlErr.Err = "Enter a valid email address";
         isValid = false;
@@ -118,17 +122,19 @@ const Validation = () =>
 
     const pswrdErr = {}
     // const pswrdRegex = "/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/";
-    if(formData.password.length < 6)
+    if(formData.password == null)
     {
       pswrdErr.Err = "Enter the Strong Password"
       isValid = false
     }
-    else if(formData.password.length == 0)
+    else
     {
-      pswrdErr.Err = "Pls enter the Password"
-      isValid = false 
+    if(formData.password.length < 6 && formData.password.length != 0)
+      {
+        pswrdErr.Err = "Enter the Strong Password"
+        isValid = false
+      }
     }
-
     // else if(!formData.password.match(pswrdRegex))
     // {
     //   pswrdErr.Err = "Password Must Contains Numbers, Special Characater"
@@ -189,11 +195,8 @@ const Validation = () =>
             <Input name="password" type="password" placeholder = "password"/>
          
             {Object.keys(pswrdErr).map((err) => <h5 style={{color:"#FAC33C", fontWeight:"500"}}>{pswrdErr[err]}</h5>)}
-            
-         
-         
-            <Button onClick={handleSubmit}>Create Account</Button>
         </Form>
+        <Button onClick={handleSubmit}>Create Account</Button>
       </Wrapper>
     </Container>
   )
@@ -216,11 +219,13 @@ const Container = styled.div`
 // background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 
 const Wrapper = styled.div`
+display:flex;
+flex-direction: column;
+align-items: center;
  padding: 20px;
  width: 40%;
  background-image: linear-gradient(135deg, #de2b38 85%, white 10%);
- margin-right:700px ;
- 
+ margin-right:700px;
  ${mobileDevice({
     width: "20%"
   })}

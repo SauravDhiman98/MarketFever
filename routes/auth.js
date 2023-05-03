@@ -20,8 +20,8 @@ router.post("/register", async (req, res) => {
       salt: salt
     });
     const data = {
-      username: findUser.username,
-      email: findUser.email
+      username: req.body.username,
+      email: req.body.email
       }
     const token = jwt.sign(data, process.env.JWT_Auth_Key, {expiresIn: '3000s'})
     const savedData = await newUser.save();
