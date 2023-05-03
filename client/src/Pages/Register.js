@@ -92,6 +92,7 @@ const Validation = () =>
  else if(formData.username == null)
  {
    unameErr.Err = "Enter the Name"
+   isValid = false;
 }
 //  isUserExist()
 //  if(userFlag)
@@ -222,7 +223,7 @@ const Wrapper = styled.div`
 display:flex;
 flex-direction: column;
 align-items: center;
- padding: 20px;
+ padding: 10px;
  width: 40%;
  background-image: linear-gradient(135deg, #de2b38 85%, white 10%);
  margin-right:700px;
@@ -246,19 +247,19 @@ const Form = styled.form`
 
 const Input = styled.input`
  flex: 1;
- min-width:40%;
-margin: 20px 10px 0px 0px;
-padding: 10px;
+ min-width: 200px;
+margin: 10px;
+padding: 5px;
 `
 
 const Button = styled.button`
- width:30%;
+ width:20%;
  border:none;
- padding: 10px;
+ margin-top: 10px;
+ padding: 5px;
  background-color:  #585f6a;
  color: white;
  cursor: pointer;
- margin: 15px;
  box-shadow: 1px 2px 1px rgba(255,255,255, .8) ;
 `
 
