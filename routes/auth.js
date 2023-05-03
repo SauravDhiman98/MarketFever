@@ -100,14 +100,16 @@ router.post("/isuserexist/:id", async (req, res) => {
 
 router.get('/getcartitems/:id', async (req, res) => {
   try{
-   const userId = req.params.id;
-   const findUserById = await User.findById({_id: userId})
-   res.status(200).json(findUserById.product)
-  }
-  catch(err){
-    console.log(err)
-    res.status(401).json(err)
-  }
+    const userId = req.params.id;
+    if(userId != undefined){
+    const findUserById = await User.findById({_id: userId})
+    res.status(200).json(findUserById.product)
+    }
+   }
+   catch(err){
+     console.log({msg: "Login or Register is required"})
+     res.status(401).json({msg: "Login or Register is required"})
+   }
 })
 
 

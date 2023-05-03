@@ -19,6 +19,7 @@ const NavBar = () => {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
+    if(msg?.userInfo?._id != undefined){
     fetch(`/api/getcartitems/${msg?.userInfo?._id}`, {
       method: "GET",
       headers: {
@@ -27,6 +28,7 @@ const NavBar = () => {
     })
       .then((res) => res.json())
       .then((val) => setProductData(val));
+    }
     //  return () => {
 
     //  }
@@ -40,7 +42,12 @@ const NavBar = () => {
   };
 
   const getCartItemPage = () => {
-    navigate("/cart");
+    if(msg?.userInfo != null){
+      navigate("/cart");
+    }
+    else{
+      navigate('/login')
+    }
   };
 
   const getUserProfile = () => {
